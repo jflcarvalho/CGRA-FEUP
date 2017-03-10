@@ -22,26 +22,27 @@
  	* How can the vertices, indices and normals arrays be defined to
  	* build a prism with varying number of slices and stacks?
  	*/
+	this.vertices = [];
+	this.indices = [];
+	this.normals = [];
+	pi = Math.PI;
+	step = (pi*2)/(this.slices);
+	for (i = 0; i < this.slices; i++){ //slides
+		for(k = 0; k <= this.stacks; 1 / this.stacks){
+			this.vertices.push(Math.cos(i*step),Math.sin(i*step),k);
+			this.vertices.push(Math.cos(i*step + step),Math.sin(i*step +step),k);
+			this.vertices.push(Math.cos(i*step),Math.sin(i*step),k + this.stacks);
+			this.vertices.push(Math.cos(i*step + step),Math.sin(i*step + step), k + this.stacks);
+			this.indices.push(4*i, 4*i+1, 4*i+2, 4*i+3, 4*i+2, 4*i+1);
+			for(j = 0; j < 4; j++){
+				this.normals.push(Math.cos(i*step + step/2),Math.sin(i*step + step/2),0)
+			}
+		}
+	}
 
- 	this.vertices = [
- 	-0.5, -0.5, 0,
- 	0.5, -0.5, 0,
- 	-0.5, 0.5, 0,
- 	0.5, 0.5, 0
- 	];
-
- 	this.indices = [
- 	0, 1, 2, 
- 	3, 2, 1
- 	];
-
- 	this.normals = [
- 	0, 0, 1,
- 	0, 0, 1,
- 	0, 0, 1,
- 	0, 0, 1
- 	];
-
+	console.log(this.vertices);
+	console.log(this.indices);
+	console.log(this.normals);
  	this.primitiveType = this.scene.gl.TRIANGLES;
  	this.initGLBuffers();
  };
