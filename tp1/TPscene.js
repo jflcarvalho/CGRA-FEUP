@@ -22,6 +22,10 @@ TPscene.prototype.init = function (application) {
 
 	this.axis=new CGFaxis(this);
     this.obj = new MyObject(this);
+    this.cube = new MyUnitCube(this);
+    this.cubeQuad = new MyUnitCubeQuad(this);
+    this.table = new MyTable(this);
+    this.floor = new MyFloor(this);
 
 
     // NOTE: OpenGL transformation matrices are transposed
@@ -113,7 +117,15 @@ TPscene.prototype.display = function () {
 
 	// ---- BEGIN Primitive drawing section
 
-	this.obj.display();
+	//this.obj.display();
+    //this.cube.display();
+    //this.cubeQuad.display();
+
+
+    this.translate(4,0,2.5);
+    this.table.display();
+    this.floor.display();
+
 	
 	// ---- END Primitive drawing section
 
