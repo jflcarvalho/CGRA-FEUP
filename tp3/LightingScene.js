@@ -23,7 +23,9 @@ LightingScene.prototype.init = function(application) {
 	this.axis = new CGFaxis(this);
 
 	// Scene elements
-	this.prism = new MyPrism(this, 8, 1);
+	//this.prism = new MyPrism(this, 8, 1);
+
+	this.cylinder = new MyCylinder(this, 4, 6);
 
 	// Materials
 	this.materialDefault = new CGFappearance(this);
@@ -34,7 +36,7 @@ LightingScene.prototype.initCameras = function() {
 };
 
 LightingScene.prototype.initLights = function() {
-	this.setGlobalAmbientLight(0, 0 ,0, 1);
+	this.setGlobalAmbientLight(0.5, 0.5, 0.5, 1);
 	
 	// Positions for lights
 	this.lights[0].setPosition(5, 5, 5, 1);
@@ -87,7 +89,8 @@ LightingScene.prototype.display = function() {
 	// ---- BEGIN Primitive drawing section
 
 	// Prism
-	this.prism.display();
+	//this.prism.display();
+	this.cylinder.display();
 
 	// ---- END Primitive drawing section
 };

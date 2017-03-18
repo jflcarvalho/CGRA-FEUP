@@ -28,15 +28,13 @@
 	pi = Math.PI;
 	step = (pi*2)/(this.slices);
 	for (i = 0; i < this.slices; i++){ //slides
-		for(k = 0; k <= this.stacks; 1 / this.stacks){
-			this.vertices.push(Math.cos(i*step),Math.sin(i*step),k);
-			this.vertices.push(Math.cos(i*step + step),Math.sin(i*step +step),k);
-			this.vertices.push(Math.cos(i*step),Math.sin(i*step),k + this.stacks);
-			this.vertices.push(Math.cos(i*step + step),Math.sin(i*step + step), k + this.stacks);
-			this.indices.push(4*i, 4*i+1, 4*i+2, 4*i+3, 4*i+2, 4*i+1);
-			for(j = 0; j < 4; j++){
-				this.normals.push(Math.cos(i*step + step/2),Math.sin(i*step + step/2),0)
-			}
+		this.vertices.push(Math.cos(i*step),Math.sin(i*step),0);
+		this.vertices.push(Math.cos(i*step + step),Math.sin(i*step +step),0);
+		this.vertices.push(Math.cos(i*step),Math.sin(i*step),1);
+		this.vertices.push(Math.cos(i*step + step),Math.sin(i*step + step),1);
+		this.indices.push(4*i, 4*i+1, 4*i+2, 4*i+3, 4*i+2, 4*i+1);
+		for(j = 0; j < 4; j++){
+			this.normals.push(Math.cos(i*step + step/2),Math.sin(i*step + step/2),0)
 		}
 	}
 
